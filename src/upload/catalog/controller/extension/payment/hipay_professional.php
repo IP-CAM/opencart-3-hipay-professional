@@ -95,7 +95,10 @@ class ControllerExtensionPaymentHipayProfessional extends Controller {
 
                 if ($result->generateResult->code == 0) {
                     $this->model_checkout_order->addOrderHistory($this->session->data['order_id'], $this->config->get('payment_hipay_professional_order_status_id_pending'), $this->language->get('hipay_pending'), true);
+                    $this->cart->clear();
                     $json['redirect'] = $result->generateResult->redirectUrl;
+                } else {
+                    $json['error'] = $result->generateResult->description;
                 }
             } catch (Exception $e) {
                 $this->model_extension_payment_hipay_professional->logger(json_encode($e));
