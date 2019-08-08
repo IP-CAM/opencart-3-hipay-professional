@@ -14,8 +14,8 @@ HiPay API production or sandbox account credentials for each currency:
   - Account credentials: for each currency enabled, set the API login, password, website id and category id
   - Account currency: choose from the list
   - Website Rating: choose the website rating from the list
-  - Order title showinh on payment window
-  - Minumum and maximun amount to activate the payment method
+  - Order title showing on payment window
+  - Minimum and maximum amount to activate the payment method
   - Technical Email: this email will receive the notification alerts
   - Shopid (not mandatory)
   - Order coment for transaction (not mandatory)
