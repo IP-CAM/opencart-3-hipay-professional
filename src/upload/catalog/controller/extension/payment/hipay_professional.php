@@ -258,16 +258,16 @@ class ControllerExtensionPaymentHipayProfessional extends Controller {
 
     public function success() {
         if ($this->session->data['payment_method']['code'] == 'hipay_professional') {
-            $this->load->language('extension/payment/hipay_professional'); // 
+            $this->load->language('extension/payment/hipay_professional');
             $this->load->model('checkout/order');
-            $this->model_checkout_order->addOrderHistory($this->session->data['order_id'], $this->config->get('payment_hipay_professional_order_status_id_pending'), $this->language->get('hipay_waiting'));
+            //$this->model_checkout_order->addOrderHistory($this->session->data['order_id'], $this->config->get('payment_hipay_professional_order_status_id_pending'), $this->language->get('hipay_waiting'));
         }
         $this->response->redirect($this->url->link('checkout/success'));
     }
 
     public function decline() {
         if ($this->session->data['payment_method']['code'] == 'hipay_professional') {
-            $this->load->language('extension/payment/hipay_professional'); // 
+            $this->load->language('extension/payment/hipay_professional');
             $this->load->model('checkout/order');
             $this->model_checkout_order->addOrderHistory($this->session->data['order_id'], $this->config->get('payment_hipay_professional_order_status_id_failed'), $this->language->get('hipay_error'));
         }
@@ -276,7 +276,7 @@ class ControllerExtensionPaymentHipayProfessional extends Controller {
 
     public function cancel() {
         if ($this->session->data['payment_method']['code'] == 'hipay_professional') {
-            $this->load->language('extension/payment/hipay_professional'); // 
+            $this->load->language('extension/payment/hipay_professional');
             $this->load->model('checkout/order');
             $this->model_checkout_order->addOrderHistory($this->session->data['order_id'], $this->config->get('payment_hipay_professional_order_status_id_cancel'), $this->language->get('hipay_cancel'));
         }
