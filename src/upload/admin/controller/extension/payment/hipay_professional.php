@@ -3,7 +3,7 @@
 class ControllerExtensionPaymentHipayProfessional extends Controller {
 
     private $error = array();
-    private $extension_version = "1.0.0.1";
+    private $extension_version = "1.0.0.2";
 
     public function index() {
         $this->load->language('extension/payment/hipay_professional');

@@ -30,4 +30,4 @@ HiPay API production or sandbox account credentials for each currency:
   - SOAP extension
   - SimpleXML
 
-Version 1.0.0.1
+Version 1.0.0.2
