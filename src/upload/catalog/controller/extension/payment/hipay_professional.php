@@ -222,7 +222,7 @@ class ControllerExtensionPaymentHipayProfessional extends Controller {
 
             if ($status == "ok" && $operation == "capture") {
 
-
+				echo "capture ";
                 if (!$this->config->get('payment_hipay_professional_sandbox')) {
                     $this->endpoint = self::HIPAY_TRANSACTION_PRODUCTION;
                 } else {
@@ -238,8 +238,10 @@ class ControllerExtensionPaymentHipayProfessional extends Controller {
                 );
 
                 $result = $client->getDetails($parameters);
-
-                if ($result->getDetailsResult->code == "0" && $result->getDetailsResult->amount == $origAmount && $result->getDetailsResult->currency == $origCurrency && strtolower($result->getDetailsResult->transactionStatus) == "captured") {
+				$transactionStatus = strtolower($result->getDetailsResult->transactionStatus);
+				echo $transactionStatus;				
+                
+                if ($result->getDetailsResult->code == "0" && $result->getDetailsResult->amount == $origAmount && $result->getDetailsResult->currency == $origCurrency && ($transactionStatus == "captured" || $transactionStatus == "psp_captured" || $transactionStatus == "approved") ){
                     $this->model_checkout_order->addOrderHistory($idformerchant, $this->config->get('payment_hipay_professional_order_status_id_paid'), $this->language->get('hipay_success'));
                 } else {
                     $this->model_extension_payment_hipay_professional->logger("[NOTIFICATION] Checking transaction on Hipay returned code: " . $result->getDetailsResult->code . " Status: " . $result->getDetailsResult->transactionStatus . " Description: " . $result->getDetailsResult->description);
